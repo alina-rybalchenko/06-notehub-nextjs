@@ -1,8 +1,8 @@
-// app/notes/error.tsx
+// app/error.tsx (global fallback)
 'use client';
 import { useEffect } from 'react';
 
-export default function NotesError({
+export default function GlobalError({
   error,
   reset,
 }: {
@@ -10,12 +10,13 @@ export default function NotesError({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error('Notes route error:', error);
+    console.error('Global error:', error);
   }, [error]);
 
   return (
     <div style={{ padding: 24 }}>
-      <p>Could not fetch the list of notes. {error?.message}</p>
+      <h2>Something went wrong.</h2>
+      <p>{String(error?.message ?? 'Unknown error')}</p>
       <button onClick={() => reset()}>Try again</button>
     </div>
   );
