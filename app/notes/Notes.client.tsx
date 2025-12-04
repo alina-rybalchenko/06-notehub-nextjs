@@ -40,6 +40,7 @@ export default function NotesClient() {
   >({
     queryKey: ['notes', page, search],
     queryFn: () => fetchNotes({ page, perPage: PER_PAGE, search }),
+    placeholderData: prev => prev,
   });
 
   const totalPages = data?.totalPages ?? 0;

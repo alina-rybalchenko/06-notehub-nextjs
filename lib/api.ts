@@ -1,11 +1,6 @@
 // lib/api.ts
 import axios from 'axios';
-import type {
-  Note,
-  CreateNote,
-  FetchNotesParams,
-  FetchNotesResponse,
-} from '../types/note';
+import type { Note, CreateNote, Tag } from '../types/note';
 
 const PER_PAGE_DEFAULT = 12;
 const BASE_URL =
@@ -20,6 +15,22 @@ const api = axios.create({
     Authorization: TOKEN ? `Bearer ${TOKEN}` : undefined,
   },
 });
+
+export interface FetchNotesParams {
+  page?: number;
+  perPage?: number;
+  search?: string;
+  tag?: Tag | string;
+  sortBy?: 'created' | 'updated';
+}
+
+export interface FetchNotesResponse {
+  notes: Note[];
+  totalPages: number;
+  total?: number;
+  page?: number;
+  perPage?: number;
+}
 
 export async function fetchNotes({
   page = 1,
