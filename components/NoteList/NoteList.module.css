@@ -34,12 +34,19 @@
   margin-bottom: 12px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
+.buttonGroup {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
 .button {
-  align-self: flex-end;
   padding: 6px 12px;
   font-size: 14px;
   color: #fff;
